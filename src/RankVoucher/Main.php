@@ -14,15 +14,10 @@ use pocketmine\scheduler\PluginTask;
 use pocketmine\utils\TextFormat as TF;
 
 class Main extends PluginBase implements Listener {
-
-	public function onLoad() {
-		
-		$this->getServer()->getLogger()->notice("Rank Voucher Enabled");
-	}
 	
 	public function onEnable() {
 		
-		$this->getServer()->getLogger()->notice("Rank Voucher has been enabled! Made by MonkleeGamer");
+		$this->getServer()->getLogger()->notice("Rank Voucher has been enabled!");
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);	
 	}
 
