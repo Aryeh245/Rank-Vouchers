@@ -17,7 +17,7 @@ class Main extends PluginBase implements Listener {
 
 	public function onLoad() {
 		
-		$this->getServer()->getLogger()->notice("Rank Voucher is loading...");
+		$this->getServer()->getLogger()->notice("Rank Voucher Enabled");
 	}
 	
 	public function onEnable() {
@@ -28,7 +28,7 @@ class Main extends PluginBase implements Listener {
 
 	public function onDisable() {
 		
-		$this->getServer()->getLogger()->notice("Rank Voucher is shutting down");
+		$this->getServer()->getLogger()->notice("Rank Voucher Disabled");
 	}
 	
 	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
@@ -39,7 +39,7 @@ class Main extends PluginBase implements Listener {
 			
 				$sender->sendMessage(TF::GRAY . "§9Please use: §e/voucher (player) (rank)");
 				$sender->sendMessage(TF::GRAY . "§9Available Ranks:");
-				$sender->sendMessage(TF::GRAY . "§9Reaper, Magna, Titan, Overlord, Omega, Rebirth");
+				$sender->sendMessage(TF::GRAY . "§Titan, lord, OverLord, Mythic");
 				$sender->sendMessage(TF::GRAY . "§9Plugin Made by MonkleeGamer");
 				return true;
 			}
@@ -54,62 +54,52 @@ class Main extends PluginBase implements Listener {
 						switch($args[1]) {
 							
 							case 1:
-							case "Reaper":
+							case "Titan":
 							$book1 = Item::get(Item::BOOK, 101, 1);
-							$book1->setCustomName(TF::RED . "§l§aReaper Voucher" . PHP_EOL . 
-							TF::DARK_GRAY . " §9Click to redeem the §aReaper§9 Rank Voucher");
+							$book1->setCustomName(TF::RED . "§l§aTitan Voucher" . PHP_EOL . 
+							TF::DARK_GRAY . " §9Click to redeem the §aTitan§9 Rank Voucher");
 							
 							$player->getInventory()->addItem($book1);
 							
 							break;
 							
 							case 2:
-							case "Magna":
+							case "Lord":
 							$book2 = Item::get(Item::BOOK, 102, 1);
-							$book2->setCustomName(TF::RED . "§l§bMagna Voucher" . PHP_EOL . 
-							TF::DARK_GRAY . " §9Click to redeem the §bMagna§9 Rank Voucher");
+							$book2->setCustomName(TF::RED . "§l§bLord Voucher" . PHP_EOL . 
+							TF::DARK_GRAY . " §9Click to redeem the §bLord§9 Rank Voucher");
 							
 							$player->getInventory()->addItem($book2);
 							
 							break;
 							
 							case 3:
-							case "Titan":
+							case "OverLord":
 							$book3 = Item::get(Item::BOOK, 103, 1);
-							$book3->setCustomName(TF::RED . "§l§cTitan Voucher" . PHP_EOL . 
-							TF::DARK_GRAY . " §9Click to redeem the §cTitan§9 Rank Voucher");
+							$book3->setCustomName(TF::RED . "§l§cOverLord Voucher" . PHP_EOL . 
+							TF::DARK_GRAY . " §9Click to redeem the §cOverLord§9 Rank Voucher");
 							
 							$player->getInventory()->addItem($book3);
 							
 							break;
 							
 							case 4:
-							case "Overlord":
+							case "Omega":
 							$book4 = Item::get(Item::BOOK, 104, 1);
-							$book4->setCustomName(TF::RED . "§l§dOverlord Voucher" . PHP_EOL . 
-							TF::DARK_GRAY . " §9Click to redeem the §9Overlord§9 Rank Voucher");
+							$book4->setCustomName(TF::RED . "§l§dOmega Voucher" . PHP_EOL . 
+							TF::DARK_GRAY . " §9Click to redeem the §9Omega§9 Rank Voucher");
 							
 							$player->getInventory()->addItem($book4);
 							
 							break;
 							
 							case 5:
-							case "Omega":
+							case "Mythic":
 							$book5= Item::get(Item::BOOK, 105, 1);
-							$book5->setCustomName(TF::RED . "§l§eOmega Voucher" . PHP_EOL . 
-							TF::DARK_GRAY . " §9Click to redeem the §eOmega§9 Rank Voucher");
+							$book5->setCustomName(TF::RED . "§l§eMythic Voucher" . PHP_EOL . 
+							TF::DARK_GRAY . " §9Click to redeem the §eMythic§9 Rank Voucher");
 							
 							$player->getInventory()->addItem($book5);
-							
-							break;
-							
-							case 6:
-							case "Rebirth":
-							$book6= Item::get(Item::BOOK, 106, 1);
-							$book6->setCustomName(TF::RED . "§l§fRebirth Voucher" . PHP_EOL . 
-							TF::DARK_GRAY . " §9Click to redeem the §fRebirth§9 Rank Voucher");
-							
-							$player->getInventory()->addItem($book6);
 							
 							break;
 						}
@@ -145,95 +135,79 @@ class Main extends PluginBase implements Listener {
 			switch($damage) {
 				
 				case 101:
-                                case Reaper:
-				
-				$book1 = Item::get(Item::BOOK, 101, 1);
-
-				$pperms = $this->getServer()->getPluginManager()->getPlugin("PurePerms");
-
-                                $group = $pperms->getGroup("Reaper");
-                                $pperms->setGroup($player, $group);
-
-				$player->sendMessage(TF::BOLD . TF::DARK_GRAY . "§9You have redeemed the §aReaper§9 Rank Voucher");
-				$player->getInventory()->removeItem($book1);
-				
-				break;
-				
-				case 102:
-                                case Magna:
-				
-				$book2 = Item::get(Item::BOOK, 102, 1);
-
-				$pperms = $this->getServer()->getPluginManager()->getPlugin("PurePerms");
-
-                                $group = $pperms->getGroup("Magna");
-                                $pperms->setGroup($player, $group);
-
-				$player->sendMessage(TF::BOLD . TF::DARK_GRAY . "§9You have redeemed the §bMagna§9 Rank Voucher");
-				$player->getInventory()->removeItem($book2);
-				
-				break;
-				
-				case 103:
                                 case Titan:
 				
-				$book3 = Item::get(Item::BOOK, 103, 1);
+				$book1 = Item::get(Item::BOOK, 101, 1);
 
 				$pperms = $this->getServer()->getPluginManager()->getPlugin("PurePerms");
 
                                 $group = $pperms->getGroup("Titan");
                                 $pperms->setGroup($player, $group);
 
-				$player->sendMessage(TF::BOLD . TF::DARK_GRAY . "§9You have redeemed the §cTitan§9 Rank Voucher");
+				$player->sendMessage(TF::BOLD . TF::DARK_GRAY . "§9You have redeemed the §aTitan§9 Rank Voucher");
+				$player->getInventory()->removeItem($book1);
+				
+				break;
+				
+				case 102:
+                                case Lord:
+				
+				$book2 = Item::get(Item::BOOK, 102, 1);
+
+				$pperms = $this->getServer()->getPluginManager()->getPlugin("PurePerms");
+
+                                $group = $pperms->getGroup("Lord");
+                                $pperms->setGroup($player, $group);
+
+				$player->sendMessage(TF::BOLD . TF::DARK_GRAY . "§9You have redeemed the §bLord§9 Rank Voucher");
+				$player->getInventory()->removeItem($book2);
+				
+				break;
+				
+				case 103:
+                                case OverLord:
+				
+				$book3 = Item::get(Item::BOOK, 103, 1);
+
+				$pperms = $this->getServer()->getPluginManager()->getPlugin("PurePerms");
+
+                                $group = $pperms->getGroup("OverLord");
+                                $pperms->setGroup($player, $group);
+
+				$player->sendMessage(TF::BOLD . TF::DARK_GRAY . "§9You have redeemed the §cOverLord§9 Rank Voucher");
 				$player->getInventory()->removeItem($book3);
 				
 				break;
 
 				
 				case 104:
-                                case Overlord:
-				
-				$book4 = Item::get(Item::BOOK, 104, 1);
-
-				$pperms = $this->getServer()->getPluginManager()->getPlugin("PurePerms");
-
-                                $group = $pperms->getGroup("Overlord");
-                                $pperms->setGroup($player, $group);
-
-				$player->sendMessage(TF::BOLD . TF::DARK_GRAY . "§9You have redeemed the §dOverlord§9 Rank Voucher");
-				$player->getInventory()->removeItem($book4);
-				
-				break;
-
-				
-				case 105:
                                 case Omega:
 				
-				$book5 = Item::get(Item::BOOK, 105, 1);
+				$book4 = Item::get(Item::BOOK, 104, 1);
 
 				$pperms = $this->getServer()->getPluginManager()->getPlugin("PurePerms");
 
                                 $group = $pperms->getGroup("Omega");
                                 $pperms->setGroup($player, $group);
 
-				$player->sendMessage(TF::BOLD . TF::DARK_GRAY . "§9You have redeemed the §eOmega§9 Rank Voucher");
-				$player->getInventory()->removeItem($book5);
+				$player->sendMessage(TF::BOLD . TF::DARK_GRAY . "§9You have redeemed the §dOmega§9 Rank Voucher");
+				$player->getInventory()->removeItem($book4);
 				
 				break;
 
 				
-				case 106:
-                                case Rebirth:
+				case 105:
+                                case Mythic:
 				
-				$book6 = Item::get(Item::BOOK, 106, 1);
+				$book5 = Item::get(Item::BOOK, 105, 1);
 
 				$pperms = $this->getServer()->getPluginManager()->getPlugin("PurePerms");
 
-                                $group = $pperms->getGroup("Rebirth");
+                                $group = $pperms->getGroup("Mythic");
                                 $pperms->setGroup($player, $group);
 
-				$player->sendMessage(TF::BOLD . TF::DARK_GRAY . "§9You have redeemed the §fRebirth§9 Rank Voucher");
-				$player->getInventory()->removeItem($book6);
+				$player->sendMessage(TF::BOLD . TF::DARK_GRAY . "§9You have redeemed the §eMythic§9 Rank Voucher");
+				$player->getInventory()->removeItem($book5);
 				
 				break;
 				
